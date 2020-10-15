@@ -1,6 +1,10 @@
 <script>
     import Timer from "./components/Timer.svelte";
     import HowTo from "./components/HowTo.svelte";
+    let audio;
+    function timerEnds(e) {
+        audio.play();
+    }
 </script>
 
 <style>
@@ -10,5 +14,9 @@
 </style>
 
 <h1>Handwashing App</h1>
-<Timer />
+<Timer on:end={timerEnds} />
 <HowTo />
+
+<audio bind:this={audio}>
+    <source src="sound.wav" />
+</audio>
